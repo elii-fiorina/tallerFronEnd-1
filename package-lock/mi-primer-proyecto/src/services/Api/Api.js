@@ -22,4 +22,23 @@ const registro = async (username, pass) => {
   }
 };
 
-export { registro };
+const departamentos = () => {
+const response =  fetch(`${BASE_URL}/departamentos.php`, {
+  method: 'GET',
+  headers: {
+    'Content-type': ' application/json',
+  },
+  
+});
+
+if (response.status === 200) {
+  return response.json();
+} else {
+  return Promise.reject({
+    status: response.status,
+    message: 'Ha ocurrido un error',
+  });
+}
+};
+
+export { registro , departamentos};
